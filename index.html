@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>2026 KIMM–DLR 국제공동워크숍 준비 체크리스트</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" as="style" crossorigin
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+  :root {
+    --ink: #16243b;
+    --ink-soft: #41526b;
+    --muted: #8493a8;
+    --line: #e6eaf0;
+    --line-soft: #eef1f6;
+    --paper: #f4f6fa;
+    --surface: #ffffff;
+    --navy: #16335e;
+    --navy-2: #1f4e89;
+    --accent: #2563eb;
+    --accent-soft: #eaf1fe;
+    --good: #15a06a;
+    --good-soft: #e6f6ee;
+    --warn: #d9822b;
+    --warn-soft: #fdf1e3;
+    --danger: #d94b4b;
+    --danger-soft: #fdeaea;
+    --dw: #2563eb; --dw-soft: #e7effe;
+    --mk: #15a06a; --mk-soft: #e3f6ed;
+    --dk: #b3741a; --dk-soft: #fbf0dc;
+    --sh: #7a4fd0; --sh-soft: #f0e9fc;
+    --shadow: 0 1px 2px rgba(16,36,59,.05), 0 8px 24px rgba(16,36,59,.06);
+    --radius: 16px;
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+      "Malgun Gothic", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    -webkit-font-smoothing: antialiased; line-height: 1.55;
+    font-feature-settings: "tnum"; letter-spacing: -0.01em;
+  }
+  a { color: inherit; }
+
+  /* ---------- Header ---------- */
+  header.hero {
+    background:
+      radial-gradient(1200px 300px at 85% -40%, rgba(74,124,196,.45), transparent 60%),
+      linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff; padding: 38px 22px 30px;
+  }
+  .hero-inner { max-width: 1080px; margin: 0 auto; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; letter-spacing: .04em;
+    color: #cfe0f7; background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.18); padding: 5px 12px; border-radius: 999px;
+  }
+  h1.title {
+    margin: 14px 0 6px; font-size: clamp(22px, 4.2vw, 34px); font-weight: 800;
+    letter-spacing: -0.02em; line-height: 1.2;
+  }
+  .subnote { color: #b9cae4; font-size: 14px; margin: 0 0 18px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .meta-chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.16);
+    padding: 8px 13px; border-radius: 11px; font-size: 13.5px; font-weight: 500;
+    color: #eaf1fb; backdrop-filter: blur(4px);
+  }
+  .meta-chip b { color: #fff; font-weight: 700; }
+  .dday {
+    margin-left: auto; text-align: right; background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.2); border-radius: 12px; padding: 7px 15px;
+  }
+  .dday .num { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .dday .lbl { font-size: 11.5px; color: #c6d6ee; letter-spacing: .03em; }
+
+  /* ---------- Layout ---------- */
+  main { max-width: 1080px; margin: 0 auto; padding: 0 22px 70px; }
+
+  /* ---------- Sticky tabs ---------- */
+  .tabs-wrap {
+    position: sticky; top: 0; z-index: 30; background: rgba(244,246,250,.86);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+    margin: 0 -22px 22px; padding: 11px 22px;
+  }
+  .tabs { display: flex; gap: 8px; max-width: 1080px; margin: 0 auto; flex-wrap: wrap; }
+  .tab {
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+    padding: 9px 16px; border-radius: 999px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all .16s ease; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .tab:hover { border-color: #c9d4e4; color: var(--ink); }
+  .tab.active { background: var(--navy); color: #fff; border-color: var(--navy); box-shadow: var(--shadow); }
+  .tab .count {
+    font-size: 11.5px; background: rgba(0,0,0,.07); color: inherit;
+    padding: 1px 8px; border-radius: 999px; font-weight: 700;
+  }
+  .tab.active .count { background: rgba(255,255,255,.22); }
+
+  /* ---------- Panels ---------- */
+  .panel { display: none; animation: fade .25s ease; }
+  .panel.active { display: block; }
+  @keyframes fade { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: none;} }
+
+  /* ---------- Progress bar ---------- */
+  .progress-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 18px; margin-bottom: 20px; box-shadow: var(--shadow);
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .progress-card .ptext { font-size: 14px; font-weight: 600; color: var(--ink-soft); white-space: nowrap; }
+  .progress-card .ptext b { color: var(--accent); font-size: 16px; }
+  .bar { flex: 1; min-width: 160px; height: 10px; background: var(--line-soft); border-radius: 999px; overflow: hidden; }
+  .bar > span { display: block; height: 100%; width: 0;
+    background: linear-gradient(90deg, var(--accent), #4f86f0); border-radius: 999px; transition: width .4s ease; }
+  .reset-btn {
+    border: 1px solid var(--line); background: var(--surface); color: var(--muted);
+    font-size: 12.5px; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-weight: 600;
+  }
+  .reset-btn:hover { color: var(--danger); border-color: var(--danger); }
+
+  /* ---------- Category sections (checklist) ---------- */
+  .cat {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    margin-bottom: 16px; box-shadow: var(--shadow); overflow: hidden;
+  }
+  .cat-head {
+    display: flex; align-items: center; gap: 12px; padding: 15px 18px;
+    border-bottom: 1px solid var(--line-soft); cursor: pointer; user-select: none;
+  }
+  .cat-num {
+    flex: none; width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center;
+    background: var(--navy); color: #fff; font-weight: 800; font-size: 14px;
+  }
+  .cat-title { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+  .cat-sub { font-size: 12.5px; color: var(--muted); font-weight: 500; }
+  .cat-prog { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .cat-prog .mini {
+    font-size: 12px; font-weight: 700; color: var(--ink-soft);
+    background: var(--line-soft); padding: 3px 9px; border-radius: 999px;
+  }
+  .cat-prog .chev { color: var(--muted); transition: transform .2s ease; font-size: 13px; }
+  .cat.collapsed .chev { transform: rotate(-90deg); }
+  .cat.collapsed .items { display: none; }
+
+  .item {
+    display: grid; grid-template-columns: 30px 1fr auto; gap: 12px;
+    padding: 13px 18px; border-bottom: 1px solid var(--line-soft); align-items: start;
+    transition: background .15s ease;
+  }
+  .item:last-child { border-bottom: 0; }
+  .item:hover { background: #fafbfd; }
+  .item.done { background: var(--good-soft); }
+  .item.done:hover { background: #def0e6; }
+  .chk {
+    flex: none; width: 22px; height: 22px; border-radius: 7px; border: 2px solid #c4d0e0;
+    background: #fff; cursor: pointer; display: grid; place-items: center; margin-top: 1px;
+    transition: all .15s ease; font-size: 13px; color: transparent;
+  }
+  .chk:hover { border-color: var(--good); }
+  .item.done .chk { background: var(--good); border-color: var(--good); color: #fff; }
+  .it-body { min-width: 0; }
+  .it-task { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+  .item.done .it-task { color: var(--ink-soft); text-decoration: line-through; text-decoration-color: rgba(21,160,106,.5); }
+  .it-note { font-size: 12.5px; color: var(--muted); margin-top: 3px; }
+  .it-note.flag { color: var(--danger); font-weight: 600; }
+  .it-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex: none; }
+  .owners { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+  .owner {
+    font-size: 11.5px; font-weight: 800; padding: 2px 8px; border-radius: 999px; letter-spacing: .02em;
+  }
+  .owner.DW { background: var(--dw-soft); color: var(--dw); }
+  .owner.MK { background: var(--mk-soft); color: var(--mk); }
+  .owner.DK { background: var(--dk-soft); color: var(--dk); }
+  .owner.SH { background: var(--sh-soft); color: var(--sh); }
+  .due {
+    font-size: 12px; font-weight: 700; color: var(--ink-soft);
+    background: var(--line-soft); padding: 3px 9px; border-radius: 8px; white-space: nowrap;
+  }
+  .due.aug { background: var(--warn-soft); color: var(--warn); }
+
+  /* ---------- Owner legend ---------- */
+  .legend {
+    display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+    font-size: 12.5px; color: var(--muted); margin-bottom: 18px; padding: 0 4px;
+  }
+  .legend .li { display: inline-flex; align-items: center; gap: 6px; }
+
+  /* ---------- Supplies table ---------- */
+  .table-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); overflow: hidden;
+  }
+  .tbl-scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 13.5px; }
+  thead th {
+    background: #f7f9fc; color: var(--ink-soft); font-weight: 700; font-size: 12.5px;
+    text-align: left; padding: 12px 14px; border-bottom: 2px solid var(--line);
+    position: sticky; top: 0; letter-spacing: .01em;
+  }
+  tbody td { padding: 11px 14px; border-bottom: 1px solid var(--line-soft); vertical-align: middle; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:hover { background: #fafbfd; }
+  tbody tr.done { background: var(--good-soft); }
+  .grp-cell {
+    font-weight: 800; color: var(--navy); font-size: 13px; background: #f9fbfe;
+    vertical-align: middle; white-space: nowrap;
+  }
+  .item-name { font-weight: 600; color: var(--ink); }
+  .pill {
+    display: inline-block; font-size: 11.5px; font-weight: 700; padding: 2px 8px; border-radius: 999px;
+  }
+  .dash { color: var(--muted); }
+  .loc { color: var(--ink-soft); font-size: 12.5px; }
+  .s-chk {
+    display: inline-flex; align-items: center; gap: 7px; cursor: pointer; user-select: none;
+    font-size: 12.5px; font-weight: 700; color: var(--muted);
+  }
+  .s-chk .box {
+    width: 19px; height: 19px; border-radius: 6px; border: 2px solid #c4d0e0; background: #fff;
+    display: grid; place-items: center; color: transparent; font-size: 12px; transition: all .15s ease;
+  }
+  tr.done .s-chk { color: var(--good); }
+  tr.done .s-chk .box { background: var(--good); border-color: var(--good); color: #fff; }
+
+  /* ---------- Timeline ---------- */
+  .timeline { position: relative; padding-left: 8px; }
+  .tl-item {
+    position: relative; display: grid; grid-template-columns: 96px 1fr; gap: 16px;
+    padding-bottom: 6px;
+  }
+  .tl-time {
+    font-size: 13px; font-weight: 700; color: var(--ink-soft); text-align: right;
+    padding-top: 16px; white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .tl-line { position: relative; }
+  .tl-line::before {
+    content: ""; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: var(--line);
+  }
+  .tl-item:last-child .tl-line::before { bottom: auto; height: 24px; }
+  .tl-dot {
+    position: absolute; left: 0; top: 18px; width: 16px; height: 16px; border-radius: 50%;
+    background: #fff; border: 3px solid var(--accent); z-index: 2;
+  }
+  .tl-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 13px;
+    padding: 12px 15px; margin: 8px 0 8px 28px; box-shadow: var(--shadow);
+  }
+  .tl-card.warn { border-color: #f0c89a; background: var(--warn-soft); }
+  .tl-card .tl-cat {
+    display: inline-block; font-size: 11px; font-weight: 800; padding: 2px 9px; border-radius: 999px;
+    margin-bottom: 6px; letter-spacing: .02em;
+  }
+  .tl-card .tl-content { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+  .tl-card .tl-note { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+  .tl-card.warn .tl-note { color: var(--warn); font-weight: 600; }
+  .cat-티타임 { background: #e3f6ed; color: #15a06a; }
+  .cat-오프닝 { background: #e7effe; color: #2563eb; }
+  .cat-발표 { background: #f0e9fc; color: #7a4fd0; }
+  .cat-마무리 { background: #eef1f6; color: #41526b; }
+  .cat-중식 { background: #fbf0dc; color: #b3741a; }
+  .cat-랩투어 { background: #fde6e6; color: #d94b4b; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    max-width: 1080px; margin: 0 auto; padding: 26px 22px; color: var(--muted);
+    font-size: 12.5px; border-top: 1px solid var(--line); text-align: center; line-height: 1.7;
+  }
+  .save-note {
+    background: var(--accent-soft); border: 1px solid #cfe0fc; color: #2c5cb8;
+    border-radius: 10px; padding: 9px 14px; font-size: 12.5px; margin-bottom: 18px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  @media (max-width: 640px) {
+    .item { grid-template-columns: 24px 1fr; }
+    .it-meta { grid-column: 2; flex-direction: row; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+    .tl-item { grid-template-columns: 70px 1fr; gap: 8px; }
+    .tl-time { font-size: 11.5px; }
+    .dday { margin-left: 0; margin-top: 12px; }
+  }
+  @media print {
+    .tabs-wrap, .reset-btn, .save-note { display: none !important; }
+    .panel { display: block !important; }
+    body { background: #fff; }
+    .cat, .table-card, .tl-card, .progress-card { box-shadow: none; break-inside: avoid; }
+    .cat.collapsed .items { display: block !important; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">🇰🇷 KIMM &nbsp;×&nbsp; DLR 🇩🇪 &nbsp;·&nbsp; 국제공동워크숍</span>
+    <h1 class="title">2026 KIMM–DLR 국제공동워크숍 준비 체크리스트</h1>
+    <p class="subnote">기계연(KIMM) 개최 · 작년(독일 개최) 체크리스트를 개최측(호스트) 기준으로 보완</p>
+    <div class="meta-row">
+      <span class="meta-chip">📅 <b>2026.8.5.(수)</b> 10:00–15:00</span>
+      <span class="meta-chip">📍 한국기계연구원 <b>S1동 회의실</b></span>
+      <span class="meta-chip">🤝 주최 <b>KIMM</b> · 참석 <b>DLR</b></span>
+      <span class="dday"><div class="num" id="ddayNum">D-—</div><div class="lbl">to 8/5</div></span>
+    </div>
+  </div>
+</header>
+
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab active" data-tab="checklist">✅ 준비 업무 <span class="count" id="cnt-checklist"></span></button>
+    <button class="tab" data-tab="supplies">📦 물품 준비 <span class="count" id="cnt-supplies"></span></button>
+    <button class="tab" data-tab="timeline">🗓️ 당일 타임라인 <span class="count" id="cnt-timeline"></span></button>
+  </div>
+</div>
+
+<main>
+  <div class="save-note">💾 진행상황(체크) 표시는 <b>각자 브라우저에 자동 저장</b>됩니다. 공유 링크라도 체크는 보는 사람별로 따로 관리돼요.</div>
+
+  <!-- CHECKLIST -->
+  <section class="panel active" id="checklist">
+    <div class="legend">
+      <span style="font-weight:700;color:var(--ink-soft)">담당</span>
+      <span class="li"><span class="owner DW">DW</span> 도원</span>
+      <span class="li"><span class="owner MK">MK</span> 민국</span>
+      <span class="li"><span class="owner DK">DK</span> 동근</span>
+    </div>
+    <div class="progress-card">
+      <span class="ptext">완료 <b id="cl-done">0</b> / <span id="cl-total">0</span></span>
+      <div class="bar"><span id="cl-bar"></span></div>
+      <button class="reset-btn" data-reset="checklist">초기화</button>
+    </div>
+    <div id="checklist-body"></div>
+  </section>
+
+  <!-- SUPPLIES -->
+  <section class="panel" id="supplies">
+    <div class="legend">
+      <span style="font-weight:700;color:var(--ink-soft)">담당</span>
+      <span class="li"><span class="owner SH">SH</span> 담당자</span>
+      <span class="li"><span class="owner DW">DW</span> 도원</span>
+      <span class="li" style="color:var(--muted)">제작/구매 → 수령 → 결재 → 세팅</span>
+    </div>
+    <div class="progress-card">
+      <span class="ptext">세팅 완료 <b id="sp-done">0</b> / <span id="sp-total">0</span></span>
+      <div class="bar"><span id="sp-bar"></span></div>
+      <button class="reset-btn" data-reset="supplies">초기화</button>
+    </div>
+    <div class="table-card"><div class="tbl-scroll">
+      <table>
+        <thead><tr>
+          <th>구분</th><th>물품명</th><th>제작/구매</th><th>수령</th><th>결재</th><th>세팅 위치</th><th style="text-align:center">진행</th>
+        </tr></thead>
+        <tbody id="supplies-body"></tbody>
+      </table>
+    </div></div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="panel" id="timeline">
+    <div class="legend"><span style="font-weight:700;color:var(--ink-soft)">8/5(수) 진행 타임라인</span><span style="color:var(--muted)">일정(안) 기준 · ⚠️ 표시는 확정 필요 항목</span></div>
+    <div class="timeline" id="timeline-body"></div>
+  </section>
+</main>
+
+<footer>
+  2026 KIMM–DLR 국제공동워크숍 · 준비 체크리스트<br />
+  담당 약어 — DW: 도원, MK: 민국, DK: 동근 · 마감기한은 8/5 기준 역산한 (안)입니다.
+</footer>
+
+<script>
+/* ============ DATA ============ */
+const CHECKLIST = [
+  { num: 1, title: "행사 기획·문서", sub: "", items: [
+    { task: "워크숍 세부일정·발표자·시간배분 최종 확정 (총괄/기계연 4세부/DLR 3세부)", owner: "DW", due: "7/3", note: "일정(안) 기준" },
+    { task: "참석자 명단 확정 (KIMM/DLR 양측, 직책·영문성명)", owner: "DW", due: "7/17", note: "명찰·중식·기념품 수량 기준" },
+    { task: "행사 내용·예산 확정 후 내부결재 기안 (회의실, 다과·중식, 인쇄물, 기념품, 회의비 등)", owner: "DW", due: "7/10", note: "" },
+  ]},
+  { num: 2, title: "회의실·세팅", sub: "S1동 회의실", items: [
+    { task: "S1동 회의실 예약 및 좌석 배치(안) 확정", owner: "DW", due: "7/3", note: "양측 인원 기준" },
+    { task: "빔프로젝터·스크린·노트북·음향·포인터 사전 점검 / 발표자료 호환 테스트", owner: "DW", due: "8/4", note: "전일 리허설" },
+    { task: "좌석 명패(영문 포함)·좌석 배치도 제작", owner: "DW", due: "7/29", note: "" },
+    { task: "다과·음료 세팅", owner: "DW", due: "8/4", note: "08/5 오전 비치" },
+  ]},
+  { num: 3, title: "발표자료", sub: "", items: [
+    { task: "총괄발표 자료 취합", owner: "DW", due: "7/29", note: "" },
+    { task: "기계연 1~4세부 발표자료 취합", owner: "DW", due: "7/29", note: "영문 권장" },
+    { task: "DLR 1~3세부 발표자료 수신(영문)", owner: "DW", due: "7/29", note: "DLR측 요청" },
+    { task: "발표자료 통합본 구성·사전 점검(순서·영문·표기 통일)", owner: "DW", due: "8/4", note: "" },
+  ]},
+  { num: 4, title: "인쇄물", sub: "플랜카드·입간판", items: [
+    { task: "플랜카드·탁상용 입간판 문구 작성", owner: "DW, DK", due: "7/10", note: "" },
+    { task: "1차 시안 내부 검토 → 디자인 의뢰(마이스피플)", owner: "DW", due: "7/15", note: "작년 동일 업체" },
+    { task: "업체 시안 검토·수정 → 디자인 최종 확정", owner: "DW, DK", due: "7/22", note: "" },
+    { task: "플랜카드·입간판 최종 인쇄 요청 및 수령", owner: "DW", due: "7/29", note: "" },
+  ]},
+  { num: 5, title: "명찰·국기", sub: "", items: [
+    { task: "명찰·명찰 줄 시안 제작 → 마이스피플 디자인 의뢰", owner: "DW", due: "7/15", note: "명단 확정 후" },
+    { task: "명찰·명찰 줄 디자인 최종·수량 확정 → 인쇄 요청·수령", owner: "DW", due: "7/29", note: "여분 포함" },
+    { task: "한국·독일 국기 및 받침대(탁상용) 준비", owner: "DW", due: "7/17", note: "" },
+  ]},
+  { num: 6, title: "기념품·선물", sub: "", items: [
+    { task: "DLR 참석자용 기념품 확보", owner: "DW", due: "7/24", note: "명단 확정 먼저" },
+  ]},
+  { num: 7, title: "중식", sub: "12:00~13:30", items: [
+    { task: "식당 예약 또는 케이터링 확정 (이동시간 포함)", owner: "DW", due: "7/22", note: "원내/인근" },
+    { task: "메뉴 확정 — DLR측 식이 제한(채식·할랄·알레르기) 사전 확인", owner: "DW", due: "7/22", note: "독일 손님 필수 확인", flag: true },
+    { task: "좌석·이동 동선 안내", owner: "DW", due: "8/4", note: "" },
+  ]},
+  { num: 8, title: "랩투어", sub: "13:30~14:50, 4개", items: [
+    { task: "랩투어 실험실 4곳 확정 (가스터빈 연소기 / 고온 수전해·연료전지 / 추가 2곳)", owner: "MK, DW", due: "7/10", note: "" },
+    { task: "각 실험실 담당자 협의·일정 공유 및 영문 설명자료 준비", owner: "DW", due: "7/24", note: "" },
+    { task: "출입 동선·이동시간 점검", owner: "DW", due: "7/31", note: "" },
+  ]},
+  { num: 9, title: "의전·영접", sub: "DLR 손님", items: [
+    { task: "대전 숙소 안내 (필요 시)", owner: "DW", due: "7/24", note: "DLR 도착 일정 확인" },
+    { task: "방문자 출입 등록·주차 안내 (연구원 보안 절차)", owner: "DW", due: "7/31", note: "" },
+    { task: "원내 안내 표지판·동선 표시", owner: "DW", due: "8/4", note: "" },
+  ]},
+  { num: 10, title: "사진·기록", sub: "", items: [
+    { task: "기념 촬영 담당 지정 및 구도·단체사진 위치 사전 확인", owner: "DW", due: "8/4", note: "11:50~12:00 촬영" },
+    { task: "행사 진행 사진·기록 정리", owner: "DW", due: "8/5", note: "행사 당일" },
+  ]},
+  { num: 11, title: "비용 처리", sub: "", items: [
+    { task: "인쇄비·기념품·다과·중식·회의비 등 정산 및 결재", owner: "DW", due: "8/14", note: "총괄과제 인쇄비 등" },
+  ]},
+  { num: 12, title: "최종 점검", sub: "", items: [
+    { task: "전일 전체 세팅·리허설 점검 (회의실·자료·물품·동선 일괄 확인)", owner: "DW, MK, DK", due: "8/4", note: "체크리스트 일괄 검토" },
+  ]},
+];
+
+const SUPPLIES = [
+  { grp: "행사용품", rows: [
+    { name: "플랜카드 (워크숍용, 벽걸이)", make: "SH", recv: "SH", appr: "SH", loc: "회의실 전면" },
+    { name: "플랜카드 (기술교류회 2종, 들고찍기)", make: "SH", recv: "SH", appr: "SH", loc: "회의실/랩투어" },
+    { name: "탁상용 입간판", make: "SH", recv: "SH", appr: "SH", loc: "회의실 입구" },
+    { name: "명찰 (여분 포함)", make: "SH", recv: "SH", appr: "SH", loc: "접수대" },
+    { name: "국기 + 받침대 (한국·독일)", make: "SH", recv: "SH", appr: "SH", loc: "회의실 단상" },
+  ]},
+  { grp: "회의물품", rows: [
+    { name: "필기구 세트 (펜 접시 포함)", make: "SH", recv: "SH", appr: "SH", loc: "좌석 비치" },
+    { name: "메모지", make: "SH", recv: "SH", appr: "SH", loc: "좌석 비치" },
+    { name: "좌석 명패 (영문)", make: "SH", recv: "SH", appr: "SH", loc: "좌석 비치" },
+  ]},
+  { grp: "다과·중식", rows: [
+    { name: "티타임 다과·음료", make: "SH", recv: "SH", appr: "SH", loc: "회의실" },
+    { name: "중식 (식당 예약/케이터링)", make: "DW", recv: "—", appr: "SH", loc: "식당" },
+  ]},
+  { grp: "기념품", rows: [
+    { name: "곤룡포 컵 (소장님용 등)", make: "SH", recv: "SH", appr: "SH", loc: "선물 전달" },
+    { name: "손수건", make: "SH", recv: "SH", appr: "SH", loc: "선물 전달" },
+    { name: "키링 (갓 & 케데헌 2종)", make: "SH", recv: "SH", appr: "SH", loc: "선물 전달" },
+    { name: "그립톡", make: "SH", recv: "SH", appr: "SH", loc: "선물 전달" },
+    { name: "선물 포장 (복주머니)", make: "SH", recv: "SH", appr: "SH", loc: "선물 전달" },
+  ]},
+  { grp: "안내·의전", rows: [
+    { name: "원내 안내 표지판", make: "SH", recv: "SH", appr: "—", loc: "동선 곳곳" },
+    { name: "방문자 출입증·주차증", make: "SH", recv: "SH", appr: "—", loc: "정문/접수대" },
+  ]},
+];
+
+const TIMELINE = [
+  { time: "10:00–10:20", cat: "티타임", content: "원장님 티타임 / 기술교류회", note: "다과 세팅, 원장 비서실" },
+  { time: "10:20–10:25", cat: "오프닝", content: "참석자 소개", note: "" },
+  { time: "10:25–10:30", cat: "오프닝", content: "KIMM 총괄책임자 인사말", note: "" },
+  { time: "10:30–10:40", cat: "발표", content: "총괄발표", note: "자료 사전 점검" },
+  { time: "10:40–11:20", cat: "발표", content: "기계연 1~4세부 과제 발표 (각 10분)", note: "" },
+  { time: "11:20–11:50", cat: "발표", content: "DLR 1~3세부 과제 발표 (각 10분)", note: "영문 자료" },
+  { time: "11:50–12:00", cat: "마무리", content: "'26년 일정 협의 및 기념 촬영", note: "단체사진 위치 사전확인" },
+  { time: "12:00–13:30", cat: "중식", content: "점심 식사 (이동시간 포함)", note: "식당 예약·식이제한" },
+  { time: "13:30–13:50", cat: "랩투어", content: "가스터빈 연소기 실험실", note: "담당자·안전·통역" },
+  { time: "13:50–14:10", cat: "랩투어", content: "고온 수전해/연료전지 실험실", note: "담당자·안전·통역" },
+  { time: "14:10–14:30", cat: "랩투어", content: "실험실 (미정 — 확정 필요)", note: "확정 필요", warn: true },
+  { time: "14:30–14:50", cat: "랩투어", content: "실험실 (미정 — 확정 필요)", note: "확정 필요", warn: true },
+  { time: "14:50–15:00", cat: "마무리", content: "마무리 및 폐회 (이동시간 포함)", note: "기념품 전달" },
+];
+
+/* ============ STATE ============ */
+const LS_KEY = "kimm_dlr_2026_progress";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch (e) { state = {}; }
+const save = () => { try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) {} };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const ownerChips = (o) => o.split(",").map((x) => x.trim()).filter(Boolean)
+  .map((x) => `<span class="owner ${x}">${esc(x)}</span>`).join("");
+const mkCell = (v) => v === "—" ? '<span class="dash">—</span>' : `<span class="pill owner ${esc(v)}">${esc(v)}</span>`;
+
+/* ============ RENDER: CHECKLIST ============ */
+function renderChecklist() {
+  const root = document.getElementById("checklist-body");
+  root.innerHTML = CHECKLIST.map((cat, ci) => {
+    const items = cat.items.map((it, ii) => {
+      const id = `c-${ci}-${ii}`;
+      const done = !!state[id];
+      const aug = it.due.startsWith("8/");
+      return `<div class="item ${done ? "done" : ""}" data-id="${id}">
+        <div class="chk" role="checkbox" aria-checked="${done}" tabindex="0">✓</div>
+        <div class="it-body">
+          <div class="it-task">${esc(it.task)}</div>
+          ${it.note ? `<div class="it-note ${it.flag ? "flag" : ""}">${it.flag ? "⚠ " : ""}${esc(it.note)}</div>` : ""}
+        </div>
+        <div class="it-meta">
+          <div class="owners">${ownerChips(it.owner)}</div>
+          <span class="due ${aug ? "aug" : ""}">${esc(it.due)}</span>
+        </div>
+      </div>`;
+    }).join("");
+    return `<div class="cat" data-cat="${ci}">
+      <div class="cat-head">
+        <span class="cat-num">${cat.num}</span>
+        <div><div class="cat-title">${esc(cat.title)}</div>${cat.sub ? `<div class="cat-sub">${esc(cat.sub)}</div>` : ""}</div>
+        <div class="cat-prog"><span class="mini" data-mini="${ci}"></span><span class="chev">▼</span></div>
+      </div>
+      <div class="items">${items}</div>
+    </div>`;
+  }).join("");
+}
+
+/* ============ RENDER: SUPPLIES ============ */
+function renderSupplies() {
+  const root = document.getElementById("supplies-body");
+  let html = "";
+  SUPPLIES.forEach((g, gi) => {
+    g.rows.forEach((r, ri) => {
+      const id = `s-${gi}-${ri}`;
+      const done = !!state[id];
+      html += `<tr class="${done ? "done" : ""}" data-id="${id}">
+        ${ri === 0 ? `<td class="grp-cell" rowspan="${g.rows.length}">${esc(g.grp)}</td>` : ""}
+        <td class="item-name">${esc(r.name)}</td>
+        <td>${mkCell(r.make)}</td>
+        <td>${mkCell(r.recv)}</td>
+        <td>${mkCell(r.appr)}</td>
+        <td class="loc">${esc(r.loc)}</td>
+        <td style="text-align:center">
+          <span class="s-chk" role="checkbox" aria-checked="${done}" tabindex="0">
+            <span class="box">✓</span>${done ? "완료" : "대기"}
+          </span>
+        </td>
+      </tr>`;
+    });
+  });
+  root.innerHTML = html;
+}
+
+/* ============ RENDER: TIMELINE ============ */
+function renderTimeline() {
+  const root = document.getElementById("timeline-body");
+  root.innerHTML = TIMELINE.map((t) => `
+    <div class="tl-item">
+      <div class="tl-time">${esc(t.time)}</div>
+      <div class="tl-line">
+        <span class="tl-dot" style="border-color:${t.warn ? "#d94b4b" : "var(--accent)"}"></span>
+        <div class="tl-card ${t.warn ? "warn" : ""}">
+          <span class="tl-cat cat-${t.cat}">${esc(t.cat)}</span>
+          <div class="tl-content">${esc(t.content)}</div>
+          ${t.note ? `<div class="tl-note">${t.warn ? "⚠ " : ""}${esc(t.note)}</div>` : ""}
+        </div>
+      </div>
+    </div>`).join("");
+}
+
+/* ============ PROGRESS ============ */
+function updateProgress() {
+  // checklist
+  let clDone = 0, clTotal = 0;
+  CHECKLIST.forEach((cat, ci) => {
+    let d = 0;
+    cat.items.forEach((_, ii) => { clTotal++; if (state[`c-${ci}-${ii}`]) { clDone++; d++; } });
+    const mini = document.querySelector(`[data-mini="${ci}"]`);
+    if (mini) mini.textContent = `${d}/${cat.items.length}`;
+  });
+  document.getElementById("cl-done").textContent = clDone;
+  document.getElementById("cl-total").textContent = clTotal;
+  document.getElementById("cl-bar").style.width = clTotal ? (clDone / clTotal * 100) + "%" : "0";
+  // supplies
+  let spDone = 0, spTotal = 0;
+  SUPPLIES.forEach((g, gi) => g.rows.forEach((_, ri) => { spTotal++; if (state[`s-${gi}-${ri}`]) spDone++; }));
+  document.getElementById("sp-done").textContent = spDone;
+  document.getElementById("sp-total").textContent = spTotal;
+  document.getElementById("sp-bar").style.width = spTotal ? (spDone / spTotal * 100) + "%" : "0";
+  // tab counts
+  document.getElementById("cnt-checklist").textContent = `${clDone}/${clTotal}`;
+  document.getElementById("cnt-supplies").textContent = `${spDone}/${spTotal}`;
+  document.getElementById("cnt-timeline").textContent = TIMELINE.length;
+}
+
+/* ============ TOGGLE ============ */
+function toggle(id) {
+  state[id] = !state[id];
+  if (!state[id]) delete state[id];
+  save();
+}
+function refreshRow(el, id) {
+  const on = !!state[id];
+  el.classList.toggle("done", on);
+  const sc = el.querySelector(".s-chk");
+  if (sc) sc.lastChild.textContent = on ? "완료" : "대기";
+  const chk = el.querySelector('[role="checkbox"]');
+  if (chk) chk.setAttribute("aria-checked", on);
+}
+
+/* ============ INTERACTIONS ============ */
+function wire() {
+  // checklist toggles
+  document.getElementById("checklist-body").addEventListener("click", (e) => {
+    const head = e.target.closest(".cat-head");
+    if (head) { head.parentElement.classList.toggle("collapsed"); return; }
+    const item = e.target.closest(".item");
+    if (item) { toggle(item.dataset.id); refreshRow(item, item.dataset.id); updateProgress(); }
+  });
+  // supplies toggles
+  document.getElementById("supplies-body").addEventListener("click", (e) => {
+    const tr = e.target.closest("tr");
+    if (tr && tr.dataset.id) { toggle(tr.dataset.id); refreshRow(tr, tr.dataset.id); updateProgress(); }
+  });
+  // keyboard on checkboxes
+  document.body.addEventListener("keydown", (e) => {
+    if ((e.key === "Enter" || e.key === " ") && e.target.getAttribute("role") === "checkbox") {
+      e.preventDefault();
+      const row = e.target.closest("[data-id]");
+      if (row) { toggle(row.dataset.id); refreshRow(row, row.dataset.id); updateProgress(); }
+    }
+  });
+  // tabs
+  document.querySelectorAll(".tab").forEach((btn) => btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach((b) => b.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach((p) => p.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.tab).classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }));
+  // reset
+  document.querySelectorAll("[data-reset]").forEach((btn) => btn.addEventListener("click", () => {
+    const prefix = btn.dataset.reset === "checklist" ? "c-" : "s-";
+    if (!confirm("이 탭의 체크 표시를 모두 초기화할까요? (내 브라우저에서만)")) return;
+    Object.keys(state).forEach((k) => { if (k.startsWith(prefix)) delete state[k]; });
+    save();
+    btn.dataset.reset === "checklist" ? renderChecklist() : renderSupplies();
+    updateProgress();
+  }));
+}
+
+/* ============ D-DAY ============ */
+function setDday() {
+  try {
+    const ev = new Date(2026, 7, 5); // 2026-08-05
+    const now = new Date();
+    const t0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const diff = Math.round((ev - t0) / 86400000);
+    const el = document.getElementById("ddayNum");
+    el.textContent = diff > 0 ? `D-${diff}` : diff === 0 ? "D-DAY" : `D+${-diff}`;
+  } catch (e) {}
+}
+
+/* ============ INIT ============ */
+renderChecklist();
+renderSupplies();
+renderTimeline();
+updateProgress();
+wire();
+setDday();
+</script>
+</body>
+</html>
